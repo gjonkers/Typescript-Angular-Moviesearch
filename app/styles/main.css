@@ -1,0 +1,129 @@
+* {
+  position: relative;
+  -webkit-touch-callout: none;
+  -webkit-backface-visibility: hidden;
+  box-sizing: border-box; }
+
+button:focus {
+  outline: 0; }
+
+iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, abbr, address, cite, code, del, dfn, em, img, ins, kbd, q, samp, small, strong, sub, sup, var, b, i, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  outline: 0;
+  font-size: 100%;
+  font-weight: normal;
+  vertical-align: baseline;
+  background: transparent; }
+
+body {
+  line-height: 1;
+  margin: 0;
+  padding: 0; }
+
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block; }
+
+ul {
+  list-style: none; }
+
+blockquote,
+q {
+  quotes: none; }
+  blockquote:before, blockquote:after,
+  q:before,
+  q:after {
+    content: '';
+    content: none; }
+
+a {
+  margin: 0;
+  padding: 0;
+  font-size: 100%;
+  background: transparent;
+  border: none;
+  text-decoration: none; }
+
+ins {
+  background-color: #ff9;
+  color: #000;
+  text-decoration: none; }
+
+mark {
+  background-color: #ff9;
+  color: #000;
+  font-style: italic;
+  font-weight: bold; }
+
+del {
+  text-decoration: line-through; }
+
+abbr[title],
+dfn[title] {
+  border-bottom: 1px dotted;
+  cursor: help; }
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #cccccc;
+  margin: 1em 0;
+  padding: 0; }
+
+main {
+  display: block; }
+
+input,
+select {
+  vertical-align: middle; }
+
+/*button declarations*/
+/*Primary button delations*/
+/*secondary button declarations*/
+/*button declarations*/
+/*Primary button delations*/
+/*secondary button declarations*/
+.clearfix:after, .menu:after, .app-view:after {
+  content: ".";
+  display: block;
+  clear: both;
+  visibility: hidden;
+  line-height: 0;
+  height: 0; }
+
+.button, .primary-button, .secondary-button {
+  width: 145px;
+  height: 38px;
+  line-height: 38px;
+  font-size: 14px;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  display: block;
+  box-shadow: 0px 0px 3px 0px rgba(0, 0, 0, 0.28);
+  text-align: center; }
+
+.primary-button {
+  color: #fff;
+  background-color: #1483cd; }
+
+.secondary-button {
+  color: #707070;
+  background-color: #f5f5f5; }
+  .secondary-button:hover, .secondary-button.selected {
+    background-color: #fff; }
+
+.menu {
+  list-style: none;
+  margin-bottom: 2em;
+  padding: 0 0 0.5em; }
+  .menu li {
+    float: left; }
+
+/*# sourceMappingURL=main.css.map */

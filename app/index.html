@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="movies">
+
+<head>
+	<meta charset="utf-8">
+	<base href="/">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Movie Search App</title>
+	<meta name="description" content="">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href="bower_components/bootstrap/dist/css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="styles/main.css">
+</head>
+
+<body>
+	<header>
+		<nav class="navbar navbar-default header">
+			<div class="container">
+				<div class="navbar-header">
+					<a class="navbar-brand title">Movie Search</a>
+				</div>
+			</div>
+		</nav>
+	</header>
+	<div class="container ">
+		<div ng-view></div>
+	</div>
+
+	<script src="bower_components/angular/angular.js"></script>
+	<script src="bower_components/angular-route/angular-route.js"></script>
+	<script src="app.js"></script>
+	<script src="js/movies/moviesModule.js"></script>
+	<script src="js/movies/controllers/moviesController.js"></script>
+	<script src="js/movies/services/movieService.js"></script>
+	<script src="js/movies/components/movieComponent.js"></script>
+
+</body>
+
+</html>

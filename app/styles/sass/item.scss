@@ -1,0 +1,48 @@
+@import "theme.scss";
+@import "mixin.scss";
+
+.button {
+    width: $button-width;
+    height: $button-height;
+	line-height: $button-height;
+    font-size: $button-text-size;
+    text-transform: uppercase;
+    border: none;
+    cursor: pointer;
+    display: block;
+    box-shadow: $button-shadow;
+	text-align: center;
+}
+
+.primary-button {
+    @extend .button;
+    color: $button-primary-text-color;
+    background-color: $button-primary-background-color;    
+}
+
+.secondary-button {
+    @extend .button;
+    color: $button-secondary-text-color;
+    background-color: $button-secondary-background-color;
+
+    &:hover, &.selected {
+        background-color: $button-secondary-higlighted-background-color;
+    }
+}
+
+
+.menu {
+	@extend .clearfix;
+	
+	list-style: none;
+	margin-bottom: 2em;
+	padding: 0 0 0.5em;
+	
+	li {
+		float: left;
+	}
+}
+
+.app-view {
+	@extend .clearfix;
+}
