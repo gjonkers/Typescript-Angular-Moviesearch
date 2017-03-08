@@ -5,22 +5,33 @@ class moviesController {
 
     static angularDependencies = ['$scope', 'movieService', moviesController]
     public movieService;
-    public moviesList:[];
+    public errorMessage: string;
+    public moviesList: [any];
     constructor($scope: ng.IScope, movieService) {
         this.movieService = movieService;
     }
 
     public searchMovies(movieString) {
-        console.log("search triggered in controller");
-        this.movieService.searchMovies(movieString).then(
-            (res)=>{
-                console.log("success response  - ",res);
-                this.moviesList = res.data.Search;
-            },
-            (res)=>{
-                console.log("failure response  - ",res);
-            }
-        );
+        if (typeof movieString === "undefined") {
+            this.errorMessage = 'Movie Name Should not be undefined';
+        } else {
+            this.errorMessage = '';
+            this.movieService.searchMovies(movieString).then(
+                (res) => {
+                    console.log("success response  - ", res);
+                    if(res.data.Response === "True") {
+                        this.moviesList = res.data.Search;
+                    } else {
+                        this.errorMessage = res.data.Error;
+                    }
+                    
+                },
+                (res) => {
+                    console.log("failure response  - ", res);
+                }
+            );
+        }
+
     }
 
 }
