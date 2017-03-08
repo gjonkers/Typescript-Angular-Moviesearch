@@ -1,15 +1,16 @@
 <div class="col col-lg-3 col-md-3 col-sm-6 col-xs-12 movie-detail">
     <p class="title-top">
-       {{ mcc.movie.Title| limitTo: 20 }} {{mcc.movie.Title.length < 20 ? '' : '...'}}
-    </p>
-    <div class="wrapper img-thumbnail">
-        <img class="poster" alt={{mcc.movie.Title+ " Poster"}} ref="myInput" ng-src="{{mcc.movie.Poster == 'N/A' ? 'https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRMP3aUjS-fIma3HSv0FDKF965ESXIftmDBm5j286f8wGfNtkbP' :  mcc.movie.Poster}}" />
-        <div class="mask">
-            <h3 class="title ">{{mcc.movie.Title}}</h3>
-            <div class="movie-description clearfix">
-                <p class=" "><span class="glyphicon glyphicon-film"></span>&nbsp;{{mcc.movie.Type}}&nbsp;|&nbsp;<span class="glyphicon glyphicon-calendar"></span>&nbsp;{{mcc.movie.Year}}</p>
-            </div>
-        </div>
+        {{ mcc.movie.Title| limitTo: 20 }} {{mcc.movie.Title.length
+        < 20 ? '' : '...'}} </p>
+            <div class="wrapper img-thumbnail">
+                <img class="poster" alt={{mcc.movie.Title+ " Poster"}} ref="myInput" ng-src="{{mcc.movie.Poster == 'N/A' ? 'http://afdah.tv/wp-content/themes/afdah/images/noposter.png' :  mcc.movie.Poster}}"
+                />
+                <div class="mask">
+                    <h3 class="title ">{{mcc.movie.Title}}</h3>
+                    <div class="movie-description clearfix">
+                        <p class=" "><span class="glyphicon glyphicon-film"></span>&nbsp;{{mcc.movie.Type}}&nbsp;|&nbsp;<span class="glyphicon glyphicon-calendar"></span>&nbsp;{{mcc.movie.Year}}</p>
+                    </div>
+                </div>
 
-    </div>
+            </div>
 </div>

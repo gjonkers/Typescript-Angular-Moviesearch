@@ -7,24 +7,25 @@ class moviesController {
     public movieService;
     public errorMessage: string;
     public moviesList: [any];
+    public sortType: string;
     constructor($scope: ng.IScope, movieService) {
         this.movieService = movieService;
     }
 
-    public searchMovies(movieString) {
-        if (typeof movieString === "undefined") {
-            this.errorMessage = 'Movie Name Should not be undefined';
+    public searchMovies(movieString: any) {
+        if (typeof movieString === "undefined" || movieString === "") {
+            this.errorMessage = 'Movie Name should not be empty';
         } else {
             this.errorMessage = '';
             this.movieService.searchMovies(movieString).then(
                 (res) => {
                     console.log("success response  - ", res);
-                    if(res.data.Response === "True") {
+                    if (res.data.Response === "True") {
                         this.moviesList = res.data.Search;
                     } else {
                         this.errorMessage = res.data.Error;
                     }
-                    
+
                 },
                 (res) => {
                     console.log("failure response  - ", res);
@@ -32,6 +33,10 @@ class moviesController {
             );
         }
 
+    }
+
+    public sortMovies(sortorder: any) {
+        this.sortType = sortorder;
     }
 
 }

@@ -6,8 +6,8 @@ var moviesController = (function () {
     }
     moviesController.prototype.searchMovies = function (movieString) {
         var _this = this;
-        if (typeof movieString === "undefined") {
-            this.errorMessage = 'Movie Name Should not be undefined';
+        if (typeof movieString === "undefined" || movieString === "") {
+            this.errorMessage = 'Movie Name should not be empty';
         }
         else {
             this.errorMessage = '';
@@ -23,6 +23,9 @@ var moviesController = (function () {
                 console.log("failure response  - ", res);
             });
         }
+    };
+    moviesController.prototype.sortMovies = function (sortorder) {
+        this.sortType = sortorder;
     };
     return moviesController;
 }());
