@@ -2,7 +2,13 @@
 /// <reference path="../.../../../../typings/angularjs/angular-route.d.ts" />
 /// <reference path="../.../../../../typings/requirejs/index.d.ts" />
 
-require(['angular', 'angularroute'], function (angular, angularroute) {
+require([
+    'angular',
+    'angular-route',
+    'js/movies/controllers/moviesController',
+    'js/movies/services/movieService',
+    'js/movies/components/movieComponent'
+], function (angular, angularroute) {
     angular.module('moviesModule', ['ngRoute'])
         .config(['$routeProvider', function ($routeProvider) {
             $routeProvider.when('/movies', {
