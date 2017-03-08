@@ -46,3 +46,91 @@
 .app-view {
 	@extend .clearfix;
 }
+
+.movie-list {
+    padding-top: 10px;
+}
+.wrapper {
+	padding: 0;
+	border: none;
+	position: relative;
+}
+
+.title {
+	color: #fafafa;
+    word-wrap: break-word;
+    font-size: 26px;
+    margin-top: 21px;
+    margin-bottom: 10.5px;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-weight: 100;
+    line-height: 1.1;
+}
+
+.title-top {
+    margin: 0 0 10.5px;
+    font-family: "Open Sans","Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
+    color: #222222;
+}
+
+
+.poster {
+    height: 300px;
+    width: 200px;
+    /*width: 100%;*/
+    border-radius: 2px;
+    box-shadow: 1px 0px 5px 1px rgba(189, 188, 188, 0.7);
+    cursor: pointer;
+}
+
+.mask {
+	display: none;
+	position: absolute;
+	height: 300px;
+    width: 200px;
+    padding: 12px;
+    /*background-color: rgba(51, 51, 51, 0.69);*/
+    background-color: rgba(76, 76, 76, 0.8);
+    top: 0;
+}
+
+
+.wrapper:hover .mask{
+	display: block;
+}
+
+.movie-description .glyphicon {
+	color: #ccc;
+}
+
+.movie-detail {
+	margin: 20px 0;
+	border: none;
+    text-align: center;
+}
+
+.movie-description {
+    padding: 8px 0;
+    width: 100%;
+    color: #fafafa;
+    margin-top: 25px;
+}
+
+.movie-description p {
+	margin-bottom: 0;
+	text-transform: capitalize;
+    font-size: 16px;
+}
+.movie-description div {
+	width:45%;
+}
+
+.Type {
+	text-align: right;
+}
+
+.Year {
+	text-align: left;
+}

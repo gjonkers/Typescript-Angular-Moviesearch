@@ -6,13 +6,26 @@ var moviesController = (function () {
     }
     moviesController.prototype.searchMovies = function (movieString) {
         var _this = this;
-        console.log("search triggered in controller");
-        this.movieService.searchMovies(movieString).then(function (res) {
-            console.log("success response  - ", res);
-            _this.moviesList = res.data.Search;
-        }, function (res) {
-            console.log("failure response  - ", res);
-        });
+        if (typeof movieString === "undefined" || movieString === "") {
+            this.errorMessage = 'Movie Name should not be empty';
+        }
+        else {
+            this.errorMessage = '';
+            this.movieService.searchMovies(movieString).then(function (res) {
+                console.log("success response  - ", res);
+                if (res.data.Response === "True") {
+                    _this.moviesList = res.data.Search;
+                }
+                else {
+                    _this.errorMessage = res.data.Error;
+                }
+            }, function (res) {
+                console.log("failure response  - ", res);
+            });
+        }
+    };
+    moviesController.prototype.sortMovies = function (sortorder) {
+        this.sortType = sortorder;
     };
     return moviesController;
 }());
