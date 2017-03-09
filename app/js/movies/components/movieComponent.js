@@ -1,6 +1,6 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../../typings/requirejs/index.d.ts"/>
-require(['angular'], function (angular) {
+define([], function () {
     var movieComponent = (function () {
         function movieComponent() {
             this.bindings = {
@@ -18,5 +18,7 @@ require(['angular'], function (angular) {
         ;
         return movieComponentController;
     }());
-    angular.module('moviesModule').component('movieComponent', new movieComponent());
+    return {
+        moviesComponent: movieComponent
+    };
 });

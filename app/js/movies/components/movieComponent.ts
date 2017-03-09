@@ -1,6 +1,8 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../../typings/requirejs/index.d.ts"/>
-require(['angular'], function (angular) {
+
+
+define([], function() {
     class movieComponent {
         public bindings: any;
         public controller: any;
@@ -22,6 +24,7 @@ require(['angular'], function (angular) {
         constructor() { };
     }
 
-    angular.module('moviesModule').component('movieComponent', new movieComponent());
+    return {
+        moviesComponent: movieComponent
+    }
 });
-

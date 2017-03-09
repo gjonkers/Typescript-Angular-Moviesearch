@@ -1,7 +1,8 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../../typings/angularjs/angular-route.d.ts" />
 /// <reference path="../../../../typings/requirejs/index.d.ts"/>
-require(['angular'], function (angular) {
+
+define([], function() {
     interface IMovie {
         searchMovies(movieString: string): ng.IPromise<{}>;
     }
@@ -19,7 +20,7 @@ require(['angular'], function (angular) {
         }
 
     }
-
-    // Register the controller with Angular
-    angular.module('moviesModule').service('movieService', movieService);
+    return {
+        movieService: movieService
+    }
 });

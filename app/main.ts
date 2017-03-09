@@ -8,9 +8,7 @@ require.config({
         'jquery': "bower_components/jQuery/dist/jquery",
         'angular': "bower_components/angular/angular",
         'angular-route': "bower_components/angular-route/angular-route",
-        'bootstrap': "bower_components/bootstrap/dist/js/bootstrap",
-        'application': "application",
-        "routes": "routes"
+        'bootstrap': "bower_components/bootstrap/dist/js/bootstrap"
     },
     shim: {
         'jquery': { exports: 'jquery' },
@@ -19,21 +17,28 @@ require.config({
     }
 });
 
-require([
-    'angular', 'angular-route', 'application'
-], function (angular) {
+define(['angular', "app", 'angular-route', 'js/movies/controllers/moviesController', 'js/movies/services/movieService', 'js/movies/components/movieComponent'
+], function (angular, App, angularRoute, moviesController, moviesService, moviesComponent) {
 
-    // angular.module('movies', [
-    //     'ngRoute',
-    //     'moviesModule'
-    // ]).
-    //     config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
-    //         $locationProvider.hashPrefix('!');
-    //         $routeProvider.otherwise({ redirectTo: '/movies' });
-    //     }]);
+    var moviesApp = App.App;
+    moviesApp.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
+        $locationProvider.hashPrefix('!');
+        $routeProvider.otherwise({ redirectTo: '/movies' });
+    }]);
 
-    var elem = document.getElementsByName("html")[0];
-    angular.bootstrap(elem, ['movies']);
+    angular.element().ready(function () {
+        angular.bootstrap(document, ['movies']);
 
-    
+    });
+    moviesApp.config(['$routeProvider', function ($routeProvider) {
+        $routeProvider.when('/movies', {
+            templateUrl: 'js/movies/views/movies.html',
+            controller: 'movesCtrl',
+            controllerAs: 'mc'
+        });
+    }]);
+
+    moviesApp.controller('movesCtrl', moviesController.moviesController);
+    moviesApp.service('movieService', moviesService.movieService);
+    moviesApp.component('movieComponent', new moviesComponent.moviesComponent());
 });

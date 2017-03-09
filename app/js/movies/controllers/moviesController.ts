@@ -2,7 +2,7 @@
 /// <reference path="../../../../typings/angularjs/angular-route.d.ts" />
 /// <reference path="../../../../typings/requirejs/index.d.ts"/>
 
-require(['angular'], function (angular) {
+define([], function () {
     class moviesController {
 
         static angularDependencies = ['$scope', 'movieService', moviesController]
@@ -21,7 +21,6 @@ require(['angular'], function (angular) {
                 this.errorMessage = '';
                 this.movieService.searchMovies(movieString).then(
                     (res) => {
-                        console.log("success response  - ", res);
                         if (res.data.Response === "True") {
                             this.moviesList = res.data.Search;
                         } else {
@@ -43,8 +42,7 @@ require(['angular'], function (angular) {
 
     }
 
-
-    // Register the controller with Angular
-    angular.module('moviesModule').controller('movesCtrl', moviesController.angularDependencies);
+    return {
+        moviesController: moviesController
+    }
 });
-

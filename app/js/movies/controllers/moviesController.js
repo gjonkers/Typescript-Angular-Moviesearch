@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../../typings/angularjs/angular-route.d.ts" />
 /// <reference path="../../../../typings/requirejs/index.d.ts"/>
-require(['angular'], function (angular) {
+define([], function () {
     var moviesController = (function () {
         function moviesController($scope, movieService) {
             this.movieService = movieService;
@@ -14,7 +14,6 @@ require(['angular'], function (angular) {
             else {
                 this.errorMessage = '';
                 this.movieService.searchMovies(movieString).then(function (res) {
-                    console.log("success response  - ", res);
                     if (res.data.Response === "True") {
                         _this.moviesList = res.data.Search;
                     }
@@ -32,6 +31,7 @@ require(['angular'], function (angular) {
         return moviesController;
     }());
     moviesController.angularDependencies = ['$scope', 'movieService', moviesController];
-    // Register the controller with Angular
-    angular.module('moviesModule').controller('movesCtrl', moviesController.angularDependencies);
+    return {
+        moviesController: moviesController
+    };
 });

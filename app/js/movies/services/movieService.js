@@ -1,7 +1,7 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../../typings/angularjs/angular-route.d.ts" />
 /// <reference path="../../../../typings/requirejs/index.d.ts"/>
-require(['angular'], function (angular) {
+define([], function () {
     var movieService = (function () {
         function movieService($http) {
             this.httpService = $http;
@@ -13,6 +13,7 @@ require(['angular'], function (angular) {
         return movieService;
     }());
     movieService.$inject = ["$http"];
-    // Register the controller with Angular
-    angular.module('moviesModule').service('movieService', movieService);
+    return {
+        movieService: movieService
+    };
 });
