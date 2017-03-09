@@ -165,9 +165,8 @@ select {
   height: 300px;
   width: 200px;
   padding: 12px;
-  /*background-color: rgba(51, 51, 51, 0.69);*/
   background-color: rgba(76, 76, 76, 0.8);
-  top: 0; }
+  top: 4px; }
 
 .wrapper:hover .mask {
   display: block; }

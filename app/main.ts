@@ -17,12 +17,26 @@ require.config({
     }
 });
 
-define(['angular', "app", 'angular-route', 'js/movies/controllers/moviesController', 'js/movies/services/movieService', 'js/movies/components/movieComponent'
-], function (angular, App, angularRoute, moviesController, moviesService, moviesComponent) {
+define([
+    'angular',
+    "app",
+    'angular-route',
+    'js/movies/controllers/moviesController',
+    'js/movies/services/movieService',
+    'js/movies/components/movieComponent',
+    'js/movieDetailComponent/controllers/movieDetailController'
+], function (
+    angular,
+    App,
+    angularRoute,
+    moviesController,
+    moviesService,
+    moviesComponent,
+    movieDetailController) {
 
     var moviesApp = App.App;
     moviesApp.config(['$locationProvider', '$routeProvider', function ($locationProvider, $routeProvider) {
-        $locationProvider.hashPrefix('!');
+        //$locationProvider.hashPrefix('!');
         $routeProvider.otherwise({ redirectTo: '/movies' });
     }]);
 
@@ -31,14 +45,21 @@ define(['angular', "app", 'angular-route', 'js/movies/controllers/moviesControll
 
     });
     moviesApp.config(['$routeProvider', function ($routeProvider) {
-        $routeProvider.when('/movies', {
-            templateUrl: 'js/movies/views/movies.html',
-            controller: 'movesCtrl',
-            controllerAs: 'mc'
-        });
+        $routeProvider
+            .when('/movies', {
+                templateUrl: 'js/movies/views/movies.html',
+                controller: 'movesCtrl',
+                controllerAs: 'mc'
+            })
+            .when('/movie-detail:id', {
+                templateUrl: 'js/movieDetailComponent/views/movieDetail.html',
+                controller: 'movieDetailController',
+                controllerAs: 'mdc'
+            });
     }]);
 
     moviesApp.controller('movesCtrl', moviesController.moviesController);
+    moviesApp.controller('movieDetailController', movieDetailController.movieDetailController);
     moviesApp.service('movieService', moviesService.movieService);
     moviesApp.component('movieComponent', new moviesComponent.moviesComponent());
 });
