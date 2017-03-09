@@ -6,5 +6,8 @@
  },
  "include": [
         "app/**/*"
+    ],
+    "files": [
+        "typings/requirejs/index.d.ts"
     ]
 }
