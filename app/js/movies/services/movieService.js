@@ -5,7 +5,6 @@ var movieService = (function () {
         this.httpService = $http;
     }
     movieService.prototype.searchMovies = function (movieString) {
-        console.log("search triggered");
         return this.httpService.get("http://www.omdbapi.com/?s=" + movieString);
     };
     return movieService;

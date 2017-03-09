@@ -8,6 +8,7 @@ class moviesController {
     public errorMessage: string;
     public moviesList: [any];
     public sortType: string;
+    public movieDetails:any;
     constructor($scope: ng.IScope, movieService) {
         this.movieService = movieService;
     }
@@ -19,7 +20,6 @@ class moviesController {
             this.errorMessage = '';
             this.movieService.searchMovies(movieString).then(
                 (res) => {
-                    console.log("success response  - ", res);
                     if (res.data.Response === "True") {
                         this.moviesList = res.data.Search;
                     } else {
@@ -36,10 +36,18 @@ class moviesController {
     }
 
     public sortMovies(sortorder: any) {
-        this.sortType = sortorder;
+        if (this.moviesList === undefined) {
+            this.errorMessage = 'You need something to sort :P';
+        }
+        else {
+            this.errorMessage = '';
+            this.sortType = sortorder;
+        }
+
     }
 
 }
+
 
 
 // Register the controller with Angular

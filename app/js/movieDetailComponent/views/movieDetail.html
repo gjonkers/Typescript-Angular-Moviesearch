@@ -1,0 +1,21 @@
+<div ng-show="mdc.movieDetails.Title">
+    <a href="#/movies" class="btn btn-info"> < Back To Search Page </a>
+    <h2>{{mdc.movieDetails.Title}}</h2>
+    <div class="row">
+        <div class="col-md-3"><img class="img-thumbnail" src={{mdc.movieDetails.Poster}}/></div>
+        <div class="col-md-9">
+            <p><b>Rating:</b> {{mdc.movieDetails.imdbRating}}</p>
+            <p><b>Released:</b> {{mdc.movieDetails.Released}}</p>
+            <p><b>Director:</b> {{mdc.movieDetails.Director}}</p>
+            <p><b>Genre:</b> {{mdc.movieDetails.Genre}}</p>
+            <p><b>Actors:</b> {{mdc.movieDetails.Actors}}</p>
+            <p><b>Awards:</b> {{mdc.movieDetails.Awards}}</p>
+            <p><b>Country:</b> {{mdc.movieDetails.Country}}</p>
+            <p><b>Language:</b> {{mdc.movieDetails.Language}}</p>
+            <p><b>Metascore:</b> {{mdc.movieDetails.Metascore}}</p>
+            <p><b>Plot:</b> {{mdc.movieDetails.Plot}}</p>
+            <p><b>Writer:</b> {{mdc.movieDetails.Writer}}</p>
+
+        </div>
+    </div>
+</div>

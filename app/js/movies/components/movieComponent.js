@@ -11,9 +11,10 @@ var movieComponent = (function () {
     return movieComponent;
 }());
 var movieComponentController = (function () {
-    function movieComponentController() {
+    function movieComponentController($http) {
+        this.httpService = $http;
     }
-    ;
     return movieComponentController;
 }());
+movieComponentController.$inject = ["$http"];
 angular.module('moviesModule').component('movieComponent', new movieComponent());

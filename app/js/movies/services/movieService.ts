@@ -13,7 +13,6 @@ class movieService implements IMovie  {
     }
 
     searchMovies(movieString:string) : ng.IPromise<{}> {
-        console.log("search triggered");
         return this.httpService.get("http://www.omdbapi.com/?s=" + movieString);
     }
 

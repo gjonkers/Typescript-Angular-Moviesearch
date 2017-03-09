@@ -12,7 +12,6 @@ var moviesController = (function () {
         else {
             this.errorMessage = '';
             this.movieService.searchMovies(movieString).then(function (res) {
-                console.log("success response  - ", res);
                 if (res.data.Response === "True") {
                     _this.moviesList = res.data.Search;
                 }
@@ -25,7 +24,13 @@ var moviesController = (function () {
         }
     };
     moviesController.prototype.sortMovies = function (sortorder) {
-        this.sortType = sortorder;
+        if (this.moviesList === undefined) {
+            this.errorMessage = 'You need something to sort :P';
+        }
+        else {
+            this.errorMessage = '';
+            this.sortType = sortorder;
+        }
     };
     return moviesController;
 }());
