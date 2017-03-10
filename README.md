@@ -16,7 +16,7 @@ and its package manager (npm) installed.
 
 ### Clone `Typescript-Angular-Moviesearch`
 
-Clone the `angular-seed` repository using git:
+Clone the `Typescript-Angular-Moviesearch` repository using git:
 
 ```
 git clone https://github.com/some-subhra/Typescript-Angular-Moviesearch.git
@@ -26,7 +26,7 @@ cd /Typescript-Angular-Moviesearch
 ### Install Dependencies & Run the Application
 
 We have two kinds of dependencies in this project: tools and Angular framework code. The tools help
-us manage and test the application.
+us manage the application.
 
 * We get the tools we depend upon via `npm`, the [Node package manager][npm].
 * We get the Angular code via `bower`, a [client-side code package manager][bower].
@@ -48,8 +48,11 @@ Now browse to the app at [`localhost:8000/`][local-app-url].
 
 ### How the Application works
 
-Type the movie name in the search field
-hit Enter-Key or Click on the search button
-Movie list will appear, can be soarted accordingly through the sort buttons below the search field
-On clicking any movie name it will take to the movie details page
+* Type the movie name in the search field
+* Hit Enter-Key or Click on the search button
+* Movie list will appear
+* Movie list can be soarted accordingly through the sort buttons below the search field
+* On hover over the ovie tile it will display Title,Year and Type
+* On clicking any movie name it will take to the movie details page
+
 
