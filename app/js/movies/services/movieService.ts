@@ -2,7 +2,7 @@
 /// <reference path="../../../../typings/angularjs/angular-route.d.ts" />
 /// <reference path="../../../../typings/requirejs/index.d.ts"/>
 
-define([], function() {
+define([], function () {
     interface IMovie {
         searchMovies(movieString: string): ng.IPromise<{}>;
     }
@@ -15,7 +15,6 @@ define([], function() {
         }
 
         searchMovies(movieString: string): ng.IPromise<{}> {
-            console.log("search triggered");
             return this.httpService.get("http://www.omdbapi.com/?s=" + movieString);
         }
 

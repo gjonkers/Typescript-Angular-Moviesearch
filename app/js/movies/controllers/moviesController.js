@@ -3,8 +3,13 @@
 /// <reference path="../../../../typings/requirejs/index.d.ts"/>
 define([], function () {
     var moviesController = (function () {
-        function moviesController($scope, movieService) {
+        function moviesController($scope, $rootScope, movieService) {
             this.movieService = movieService;
+            this.rootScope = $rootScope;
+            if (this.rootScope.movielist) {
+                this.moviesList = this.rootScope.movielist;
+                this.movieString = this.rootScope.searchString;
+            }
         }
         moviesController.prototype.searchMovies = function (movieString) {
             var _this = this;
@@ -16,6 +21,8 @@ define([], function () {
                 this.movieService.searchMovies(movieString).then(function (res) {
                     if (res.data.Response === "True") {
                         _this.moviesList = res.data.Search;
+                        _this.rootScope.searchString = movieString;
+                        _this.rootScope.movielist = res.data.Search;
                     }
                     else {
                         _this.errorMessage = res.data.Error;
@@ -26,7 +33,12 @@ define([], function () {
             }
         };
         moviesController.prototype.sortMovies = function (sortorder) {
-            this.sortType = sortorder;
+            if (this.moviesList) {
+                this.sortType = sortorder;
+            }
+            else {
+                this.errorMessage = 'You need somthing to sort :P';
+            }
         };
         return moviesController;
     }());

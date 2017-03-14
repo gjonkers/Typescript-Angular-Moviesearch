@@ -3,7 +3,7 @@
         < Back To Search Page </a>
             <h2>{{mdc.movieDetails.Title}}</h2>
             <div class="row">
-                <div class="col-md-3"><img class="img-thumbnail" src={{mdc.movieDetails.Poster}}/></div>
+                <div class="col-md-3"><img class="img-thumbnail" ng-src="{{mdc.movieDetails.Poster == 'N/A' ? 'http://afdah.tv/wp-content/themes/afdah/images/noposter.png' :  mdc.movieDetails.Poster}}"/></div>
                 <div class="col-md-9">
                     <p><b>Rating:</b> {{mdc.movieDetails.imdbRating}}</p>
                     <p><b>Released:</b> {{mdc.movieDetails.Released}}</p>

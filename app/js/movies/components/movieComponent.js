@@ -1,6 +1,6 @@
 /// <reference path="../../../../typings/angularjs/angular.d.ts" />
 /// <reference path="../../../../typings/requirejs/index.d.ts"/>
-define([], function () {
+define([], function (moviesService) {
     var movieComponent = (function () {
         function movieComponent() {
             this.bindings = {

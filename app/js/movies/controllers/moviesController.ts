@@ -10,8 +10,15 @@ define([], function () {
         public errorMessage: string;
         public moviesList: [any];
         public sortType: string;
-        constructor($scope: ng.IScope, movieService) {
+        public rootScope:ng.IRootScopeService;
+        public movieString:string;
+        constructor($scope: ng.IScope, $rootScope:ng.IRootScopeService, movieService) {
             this.movieService = movieService;
+            this.rootScope = $rootScope;
+            if(this.rootScope.movielist){
+                this.moviesList = this.rootScope.movielist;
+                this.movieString = this.rootScope.searchString;
+            }
         }
 
         public searchMovies(movieString: any) {
@@ -23,6 +30,8 @@ define([], function () {
                     (res) => {
                         if (res.data.Response === "True") {
                             this.moviesList = res.data.Search;
+                            this.rootScope.searchString = movieString;
+                            this.rootScope.movielist = res.data.Search;
                         } else {
                             this.errorMessage = res.data.Error;
                         }
@@ -37,7 +46,13 @@ define([], function () {
         }
 
         public sortMovies(sortorder: any) {
-            this.sortType = sortorder;
+            if(this.moviesList){
+                this.sortType = sortorder;
+            }
+            else {
+                this.errorMessage = 'You need somthing to sort :P';
+            }
+            
         }
 
     }

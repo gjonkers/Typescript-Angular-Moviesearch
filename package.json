@@ -21,7 +21,8 @@
     "karma": "^1.5.0",
     "karma-chrome-launcher": "^2.0.0",
     "karma-jasmine": "^1.1.0",
-    "protractor": "^4.0.9"
+    "protractor": "^4.0.9",
+    "angular-mocks": "~1.2.9"
   },
   "scripts": {
     "postinstall": "bower install",

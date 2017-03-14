@@ -2,7 +2,7 @@
 /// <reference path="../../../../typings/requirejs/index.d.ts"/>
 
 
-define([], function() {
+define([], function (moviesService) {
     class movieComponent {
         public bindings: any;
         public controller: any;
@@ -21,7 +21,8 @@ define([], function() {
 
     class movieComponentController {
         public movie: any;
-        constructor() { };
+        constructor() {
+        };
     }
 
     return {

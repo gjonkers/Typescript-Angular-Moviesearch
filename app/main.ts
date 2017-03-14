@@ -51,7 +51,7 @@ define([
                 controller: 'movesCtrl',
                 controllerAs: 'mc'
             })
-            .when('/movie-detail:id', {
+            .when('/movies:id', {
                 templateUrl: 'js/movieDetailComponent/views/movieDetail.html',
                 controller: 'movieDetailController',
                 controllerAs: 'mdc'
