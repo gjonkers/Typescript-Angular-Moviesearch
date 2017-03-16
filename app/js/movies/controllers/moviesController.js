@@ -3,26 +3,18 @@
 /// <reference path="../../../../typings/requirejs/index.d.ts"/>
 define([], function () {
     var moviesController = (function () {
-        function moviesController($scope, $rootScope, movieService) {
-            this.movieService = movieService;
-            this.rootScope = $rootScope;
-            if (this.rootScope.movielist) {
-                this.moviesList = this.rootScope.movielist;
-                this.movieString = this.rootScope.searchString;
-            }
-        }
-        moviesController.prototype.searchMovies = function (movieString) {
+        function moviesController($scope, $routeParams, movieService) {
             var _this = this;
-            if (typeof movieString === "undefined" || movieString === "") {
-                this.errorMessage = 'Movie Name should not be empty';
+            this.movieString = $routeParams.searchString;
+            this.movieService = movieService;
+            this.errorMessage = '';
+            if (this.movieString === ":") {
+                this.errorMessage = "search field can not be empty";
             }
             else {
-                this.errorMessage = '';
-                this.movieService.searchMovies(movieString).then(function (res) {
+                this.movieService.searchMovies(this.movieString).then(function (res) {
                     if (res.data.Response === "True") {
                         _this.moviesList = res.data.Search;
-                        _this.rootScope.searchString = movieString;
-                        _this.rootScope.movielist = res.data.Search;
                     }
                     else {
                         _this.errorMessage = res.data.Error;
@@ -31,18 +23,13 @@ define([], function () {
                     console.log("failure response  - ", res);
                 });
             }
-        };
+        }
         moviesController.prototype.sortMovies = function (sortorder) {
-            if (this.moviesList) {
-                this.sortType = sortorder;
-            }
-            else {
-                this.errorMessage = 'You need somthing to sort :P';
-            }
+            this.sortType = sortorder;
         };
         return moviesController;
     }());
-    moviesController.angularDependencies = ['$scope', 'movieService', moviesController];
+    moviesController.angularDependencies = ['$scope', '$routeParams', 'movieService', moviesController];
     return {
         moviesController: moviesController
     };

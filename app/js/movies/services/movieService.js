@@ -7,7 +7,11 @@ define([], function () {
             this.httpService = $http;
         }
         movieService.prototype.searchMovies = function (movieString) {
+            this.movieString = movieString;
             return this.httpService.get("http://www.omdbapi.com/?s=" + movieString);
+        };
+        movieService.prototype.searchString = function () {
+            return this.movieString;
         };
         return movieService;
     }());

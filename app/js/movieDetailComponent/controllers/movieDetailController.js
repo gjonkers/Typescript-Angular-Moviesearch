@@ -5,7 +5,8 @@ define([], function () {
         function movieDetailController($scope, $routeParams, $location, $http) {
             var _this = this;
             this.$location = $location;
-            this.id = $routeParams.id.replace(':', '');
+            this.id = $routeParams.id.split(":")[2];
+            this.searchString = $routeParams.id.split(":")[1];
             $http.get("http://www.omdbapi.com/?i=" + this.id).then(function (res) {
                 _this.movieDetails = res.data;
             });

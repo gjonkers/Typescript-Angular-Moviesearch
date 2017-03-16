@@ -8,10 +8,12 @@ define([], function (moviesService) {
         public controller: any;
         public controllerAs: string;
         public templateUrl: string;
+        public searchString:string;
 
         constructor() {
             this.bindings = {
-                movie: '='
+                movie: '=',
+                search:'='
             };
             this.controller = movieComponentController;
             this.controllerAs = 'mcc';
@@ -21,7 +23,9 @@ define([], function (moviesService) {
 
     class movieComponentController {
         public movie: any;
+        public search:any;
         constructor() {
+            this.search = this.search.replace(":","");
         };
     }
 

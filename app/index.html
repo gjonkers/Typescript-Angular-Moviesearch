@@ -4,7 +4,6 @@
 <head>
 	<meta charset="utf-8">
 	<base href="/">
-	<intercept-url pattern="/favicon.ico" access="ROLE_ANONYMOUS" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>Movie Search App</title>
 	<meta name="description" content="">
@@ -24,7 +23,15 @@
 			</div>
 		</nav>
 	</header>
-	<div class="container ">
+	<div class="container " ng-controller="mainCtrl">
+		<div class="input-group add-on">
+			<input class="form-control" placeholder="Search By Movie Name" name="srch-term" id="srch-term" type="text" ng-model="main.movieString"
+			 ng-keyup="$event.keyCode == 13 && main.searchMovies(main.movieString)" autofocus>
+			<div class="input-group-btn">
+				<button class="btn btn-success" type="submit" ng-click="main.searchMovies(main.movieString)"><i class="glyphicon glyphicon-search"></i></button>
+			</div>
+		</div>
+		<br>
 		<div ng-view></div>
 	</div>
 

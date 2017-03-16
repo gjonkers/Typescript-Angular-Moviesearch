@@ -1,23 +1,18 @@
-<div class="input-group add-on">
-    <input class="form-control" placeholder="Search By Movie Name" name="srch-term" id="srch-term" type="text" ng-model="mc.movieString"
-        ng-keyup="$event.keyCode == 13 && mc.searchMovies(mc.movieString)" autofocus>
-    <div class="input-group-btn">
-        <button class="btn btn-success" type="submit" ng-click="mc.searchMovies(mc.movieString)"><i class="glyphicon glyphicon-search"></i></button>
-    </div>
-</div>
-
-<br> Sort BY :
-<button class="btn btn-info" ng-click="mc.sortMovies('Title')"> Title </button>
-<button class="btn btn-info" ng-click="mc.sortMovies('Type')"> Type </button>
-<button class="btn btn-info" ng-click="mc.sortMovies('Year')"> Year </button>
-<br>
-
-
 <div class="movie-list">
-    <div ng-repeat="movie in mc.moviesList  | orderBy : mc.sortType" ng-hide="mc.errorMessage">
-        <movie-component movie='movie'></movie-component>
+
+    <div ng-hide="mc.errorMessage" ng-cloak>
+        <br> Sort BY :
+        <button class="btn btn-info" ng-click="mc.sortMovies('Title')"> Title </button>
+        <button class="btn btn-info" ng-click="mc.sortMovies('Type')"> Type </button>
+        <button class="btn btn-info" ng-click="mc.sortMovies('Year')"> Year </button>
+        <br>
     </div>
-    <div class="alert alert-danger" ng-show="mc.errorMessage">
+
+    <div ng-repeat="movie in mc.moviesList  | orderBy : mc.sortType" ng-hide="mc.errorMessage">
+        <movie-component movie='movie' search='mc.movieString'></movie-component>
+    </div>
+
+    <div class="alert alert-danger" ng-show="mc.errorMessage" ng-cloak>
         <strong>Error: </strong> {{mc.errorMessage}}
     </div>
 </div>

@@ -3,58 +3,45 @@
 /// <reference path="../../../../typings/requirejs/index.d.ts"/>
 
 define([], function () {
+    interface IRouteParams extends ng.route.IRouteParamsService {
+        searchString: any;
+    }
+
     class moviesController {
 
-        static angularDependencies = ['$scope', 'movieService', moviesController]
+        static angularDependencies = ['$scope', '$routeParams', 'movieService', moviesController]
         public movieService;
         public errorMessage: string;
         public moviesList: [any];
         public sortType: string;
-        public rootScope:ng.IRootScopeService;
-        public movieString:string;
-        constructor($scope: ng.IScope, $rootScope:ng.IRootScopeService, movieService) {
+        public rootScope: ng.IRootScopeService;
+        public movieString: string;
+        constructor($scope: ng.IScope, $routeParams: IRouteParams, movieService) {
+            this.movieString = $routeParams.searchString;
             this.movieService = movieService;
-            this.rootScope = $rootScope;
-            if(this.rootScope.movielist){
-                this.moviesList = this.rootScope.movielist;
-                this.movieString = this.rootScope.searchString;
+            this.errorMessage = '';
+            if (this.movieString === ":") {
+                this.errorMessage = "search field can not be empty";
             }
-        }
-
-        public searchMovies(movieString: any) {
-            if (typeof movieString === "undefined" || movieString === "") {
-                this.errorMessage = 'Movie Name should not be empty';
-            } else {
-                this.errorMessage = '';
-                this.movieService.searchMovies(movieString).then(
+            else {
+                this.movieService.searchMovies(this.movieString).then(
                     (res) => {
                         if (res.data.Response === "True") {
                             this.moviesList = res.data.Search;
-                            this.rootScope.searchString = movieString;
-                            this.rootScope.movielist = res.data.Search;
                         } else {
                             this.errorMessage = res.data.Error;
                         }
-
                     },
                     (res) => {
                         console.log("failure response  - ", res);
                     }
                 );
             }
-
         }
 
         public sortMovies(sortorder: any) {
-            if(this.moviesList){
-                this.sortType = sortorder;
-            }
-            else {
-                this.errorMessage = 'You need somthing to sort :P';
-            }
-            
+            this.sortType = sortorder;
         }
-
     }
 
     return {

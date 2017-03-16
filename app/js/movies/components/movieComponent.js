@@ -4,7 +4,8 @@ define([], function (moviesService) {
     var movieComponent = (function () {
         function movieComponent() {
             this.bindings = {
-                movie: '='
+                movie: '=',
+                search: '='
             };
             this.controller = movieComponentController;
             this.controllerAs = 'mcc';
@@ -14,6 +15,7 @@ define([], function (moviesService) {
     }());
     var movieComponentController = (function () {
         function movieComponentController() {
+            this.search = this.search.replace(":", "");
         }
         ;
         return movieComponentController;

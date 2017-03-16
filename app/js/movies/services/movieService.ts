@@ -10,12 +10,18 @@ define([], function () {
     class movieService implements IMovie {
         static $inject = ["$http"];
         public httpService: ng.IHttpService;
+        public movieString:string;
         constructor($http: ng.IHttpService) {
             this.httpService = $http;
         }
 
         searchMovies(movieString: string): ng.IPromise<{}> {
+            this.movieString = movieString;
             return this.httpService.get("http://www.omdbapi.com/?s=" + movieString);
+        }
+
+        public searchString() {
+            return this.movieString;
         }
 
     }

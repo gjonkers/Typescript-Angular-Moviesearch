@@ -2,7 +2,7 @@
     <p class="title-top">
         {{ mcc.movie.Title| limitTo: 20 }} {{mcc.movie.Title.length
         < 20 ? '' : '...'}} </p>
-            <a href="#/movies:{{mcc.movie.imdbID}}" class="wrapper img-thumbnail">
+            <a href="#/movie-details:{{mcc.search}}:{{mcc.movie.imdbID}}" class="wrapper img-thumbnail">
                 <img class="poster" alt={{mcc.movie.Title+ " Poster"}} ref="myInput" ng-src="{{mcc.movie.Poster == 'N/A' ? 'http://afdah.tv/wp-content/themes/afdah/images/noposter.png' :  mcc.movie.Poster}}"
                 />
                 <div class="mask">
