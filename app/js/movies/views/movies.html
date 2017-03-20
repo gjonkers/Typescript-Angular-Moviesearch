@@ -1,6 +1,6 @@
 <div class="movie-list">
 
-    <div ng-hide="mc.errorMessage" ng-cloak>
+    <div ng-hide="mc.errorMessage || mc.searchMessage" ng-cloak>
         <br> Sort BY :
         <button class="btn btn-info" ng-click="mc.sortMovies('Title')"> Title </button>
         <button class="btn btn-info" ng-click="mc.sortMovies('Type')"> Type </button>
@@ -14,5 +14,9 @@
 
     <div class="alert alert-danger" ng-show="mc.errorMessage" ng-cloak>
         <strong>Error: </strong> {{mc.errorMessage}}
+    </div>
+
+    <div class="alert alert-info" ng-show="mc.searchMessage" ng-cloak>
+        <strong>Message: </strong> {{mc.searchMessage}}
     </div>
 </div>

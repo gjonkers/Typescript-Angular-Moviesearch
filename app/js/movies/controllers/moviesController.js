@@ -12,11 +12,14 @@ define([], function () {
                 this.errorMessage = "search field can not be empty";
             }
             else {
+                this.searchMessage = "searching movies.....";
                 this.movieService.searchMovies(this.movieString).then(function (res) {
                     if (res.data.Response === "True") {
+                        _this.searchMessage = "";
                         _this.moviesList = res.data.Search;
                     }
                     else {
+                        _this.searchMessage = "";
                         _this.errorMessage = res.data.Error;
                     }
                 }, function (res) {

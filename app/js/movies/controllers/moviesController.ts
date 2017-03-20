@@ -16,6 +16,7 @@ define([], function () {
         public sortType: string;
         public rootScope: ng.IRootScopeService;
         public movieString: string;
+        public searchMessage: string;
         constructor($scope: ng.IScope, $routeParams: IRouteParams, movieService) {
             this.movieString = $routeParams.searchString;
             this.movieService = movieService;
@@ -24,11 +25,14 @@ define([], function () {
                 this.errorMessage = "search field can not be empty";
             }
             else {
+                this.searchMessage = "searching movies.....";
                 this.movieService.searchMovies(this.movieString).then(
                     (res) => {
                         if (res.data.Response === "True") {
+                            this.searchMessage = "";
                             this.moviesList = res.data.Search;
                         } else {
+                            this.searchMessage = "";
                             this.errorMessage = res.data.Error;
                         }
                     },
